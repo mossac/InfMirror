@@ -1,0 +1,12 @@
+[Unit]
+Description=PRU at startup
+After=syslog.target network.target
+
+[Service]
+Type=simple
+ExecStart= ~/InfMirror/LEDStatic/setup.sh
+
+
+[Install]
+WantedBy=multi-user.target
+Alias=PRU.service

@@ -3,17 +3,17 @@ from time import sleep
 import math
 import Adafruit_BBIO.GPIO as GPIO
 import time
-
+import Adafruit_BBIO.ADC as ADC
 
 
  
-
-length = 60
-max = 24
+global flag
+flag = 0
+length = 35
+max = 32
 sw4 = "P9_42"
-blue = "P9_31"
-GPIO.setup(blue, GPIO.OUT)
 GPIO.setup(sw4, GPIO.IN)
+ADC.setup()
 # Open a file
 fo = open("/dev/rpmsg_pru30", "wb", 0)
 
@@ -23,14 +23,23 @@ oldr=0
 oldb=0
 oldg=0
 oldw=0
-def whitebut(channel):
-    
-    for i in range(0, length):
-            fo.write(b"%d %d %d %d %d\n" % (i, 255, 0, 0, 0))
-                # print("0 0 127 %d" % (i))
-            fo.write(b"-1 0 0 0 0\n");    # Send colors to LEDs
+         
 
-GPIO.add_event_detect(sw4, GPIO.RISING, callback=whitebut, bouncetime=100)
+def setred(channel):
+    #print("FLAGSET HIGH")
+    global flag
+    flag = 1
+    for i in range(0, length):
+        fo.write(b"%d %d %d %d %d\n" % (i, 50, 0, 0, 0))
+                    # print("0 0 127 %d" % (i))
+                    # Send colors to LEDs
+    fo.write(b"-1 0 0 0 0\n");
+    sleep(.07)
+    #print("FLAGSET LOW")
+    flag = 0
+
+GPIO.add_event_detect(sw4, GPIO.RISING, callback=setred, bouncetime=30)
+
 while True:
     for color in colors:
         newr = color[0]
@@ -44,8 +53,10 @@ while True:
             b = (max*oldb+(newb-oldb)*max*time/maxtime)
             w = (max*oldw+(neww-oldw)*max*time/maxtime);
             for i in range(0, length):
-                fo.write(b"%d %d %d %d %d\n" % (i, r, g, b, w))
+                if (flag == 0): 
+                    fo.write(b"%d %d %d %d %d\n" % (i, r, g, b, w))
                 # print("0 0 127 %d" % (i))
+               
             fo.write(b"-1 0 0 0 0\n");    # Send colors to LEDs
             
             # print (r,g,b)
@@ -56,5 +67,16 @@ while True:
         oldg=newg
         oldb=newb
         oldw = neww
+        
+        #print(flag)
+        #if (flag == 1):
+         #   for i in range(0, length):
+          #          fo.write(b"%d %d %d %d %d\n" % (i, 50, 0, 0, 0))
+           #         # print("0 0 127 %d" % (i))
+            #        # Send colors to LEDs
+            ##fo.write(b"-1 0 0 0 0\n");
+            #sleep(1)
+            #flag = 0
+        
 # Close opened file
 fo.close()

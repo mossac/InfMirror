@@ -4,7 +4,7 @@
 #include "resource_table_empty.h"
 #include "prugpio.h"
 
-#define STR_LEN 62
+#define STR_LEN 35
 #define LEN		32
 #define	oneCyclesOn		700/5	// Stay on 700ns
 #define oneCyclesOff	800/5

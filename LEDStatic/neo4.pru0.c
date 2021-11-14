@@ -60,7 +60,7 @@ void main(void)
 	struct pru_rpmsg_transport transport;
 	uint16_t src, dst, len;
 	volatile uint8_t *status;
-	
+
 	uint8_t r, g, b, w;
 	int i, j;
 	// Set everything to background
@@ -137,7 +137,7 @@ void main(void)
 					// Send Reset
 					__R30 &= ~out;	// Clear the GPIO pin
 					__delay_cycles(resetCycles);
-		
+
 					// Wait
 					__delay_cycles(SPEED);
 			    }
