@@ -13,7 +13,7 @@ length = 35
 max = 32
 sw4 = "P9_42"
 GPIO.setup(sw4, GPIO.IN)
-ADC.setup()
+
 # Open a file
 fo = open("/dev/rpmsg_pru30", "wb", 0)
 

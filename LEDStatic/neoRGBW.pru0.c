@@ -65,7 +65,7 @@ void main(void)
 	int i, j;
 	// Set everything to background
 	for(i=0; i<STR_LEN; i++) {
-		color[i] = 0x01000000;
+		color[i] = 0x0100;
 	}
 
 	/* Allow OCP master port access by the PRU so the PRU can read external memories */
@@ -100,7 +100,7 @@ void main(void)
 			while (pru_rpmsg_receive(&transport, &src, &dst, payload, &len) == PRU_RPMSG_SUCCESS) {
 			    char *ret;	// rest of payload after front character is removed
 			    int index;	// index of LED to control
-			    // Input format is:  index red green blue
+			    // Input format is:  index red green blue white
 			    index = atoi(payload);	
 			    // Update the array, but don't write it out.
 			    if((index >=0) & (index < STR_LEN)) {
