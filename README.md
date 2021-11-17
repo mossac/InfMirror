@@ -49,7 +49,7 @@ Physical Pinout:
 
 This image shows how the data lines of the LEDs were connected. Segment 0 represents the first segment in the datapath. Each colored segment array in the diagram is connected in parallel. Each segment is 7 leds long. This means you have a total length of 35 LEDs due to the parallelism. If you turn LED 3 on, the third LED will turn on in Green, Yellow, Grey, Blue, and Orange.
 
-![alt text](https://github.com/mossac/InfMirror/blob/master/LED-Schematic.png?raw=true)
+![Screenshot](LED-Schematic.png)
 
 This image shows how the BeagleBone Black is connected to the audio sensor and LED strip. Based on the diagram above, the LED segment below is really 5 parallel LED strips. 
 
