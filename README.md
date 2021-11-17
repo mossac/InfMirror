@@ -53,7 +53,7 @@ This image shows how the data lines of the LEDs were connected. Segment 0 repres
 
 This image shows how the BeagleBone Black is connected to the audio sensor and LED strip. Based on the diagram above, the LED segment below is really 5 parallel LED strips. 
 
-![alt text](https://github.com/theneltj/Embedded-Linux/blob/master/hw09/TempLog.png?raw=true)
+![Screenshot](Schematic.png)
 
 ### Installation
 
