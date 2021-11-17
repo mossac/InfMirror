@@ -49,11 +49,11 @@ Physical Pinout:
 
 This image shows how the data lines of the LEDs were connected. Segment 0 represents the first segment in the datapath. Each colored segment array in the diagram is connected in parallel. Each segment is 7 leds long. This means you have a total length of 35 LEDs due to the parallelism. If you turn LED 3 on, the third LED will turn on in Green, Yellow, Grey, Blue, and Orange.
 
-![image-20211116190646504](C:\Users\theneltj\AppData\Roaming\Typora\typora-user-images\image-20211116190646504.png)
+![alt text](https://github.com/mossac/InfMirror/LED-Schematic.png?raw=true)
 
 This image shows how the BeagleBone Black is connected to the audio sensor and LED strip. Based on the diagram above, the LED segment below is really 5 parallel LED strips. 
 
-![image-20211116191318194](C:\Users\theneltj\AppData\Roaming\Typora\typora-user-images\image-20211116191318194.png)
+![alt text](https://github.com/theneltj/Embedded-Linux/blob/master/hw09/TempLog.png?raw=true)
 
 ### Installation
 
